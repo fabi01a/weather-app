@@ -1,9 +1,10 @@
 import React from 'react';
+// from .app import App;
 
-function InputButton() {
+function InputButton(props) {
     return(
         <section>
-            <button>SEARCH</button>
+            <button onClick={props.onClick}>SEARCH</button>
         </section>
     );
 };
