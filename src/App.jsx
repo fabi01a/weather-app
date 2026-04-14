@@ -1,6 +1,8 @@
 import InputButton from './components/InputButton';
 import { useState } from 'react';
 import './App.css'
+import.meta.env.VITE_API_KEY
+
 
 function App() {
   const [searchInput, setSearchInput] = useState("")
@@ -9,7 +11,10 @@ function App() {
     setSearchInput(e.target.value);
   }
   function handleClick() {
-    console.log(searchInput)
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&appid=${import.meta.env.VITE_API_KEY}`
+    fetch(url)
+      .then(response => response.json())
+      .then(data => console.log(data));
   }
     return (
       <div>
