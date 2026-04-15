@@ -1,5 +1,4 @@
 import React from 'react';
-// from .app import App;
 
 function InputButton(props) {
     return(
