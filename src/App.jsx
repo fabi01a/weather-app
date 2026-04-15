@@ -22,10 +22,12 @@ function App() {
         <h1>Weather Report</h1>
         <input value={searchInput} onChange={handleChange}/>
         <InputButton onClick={handleClick}>SEARCH</InputButton>
-        {weatherData && (
+        {weatherData && weatherData.weather && (
           <div>
             <p>{weatherData.name}</p>
             <p>{weatherData.main.temp}</p>
+            <p>{weatherData.weather[0].main}</p>
+            <p>{weatherData.weather[0].description}</p>
             </div>
         )}
       </div>
