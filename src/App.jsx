@@ -13,10 +13,18 @@ function App() {
   function handleChange(e) {
     setSearchInput(e.target.value);
   }
+
   function handleClick() {
     setError(null)
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&appid=${import.meta.env.VITE_API_KEY}&units=imperial`
+    
+    if (!searchInput.trim()){
+      setError("Please enter a valid city")
+      return
+    }
+    
     setLoading(true)
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&appid=${import.meta.env.VITE_API_KEY}&units=imperial`
+  
     fetch(url)
       .then(response => response.json())
       .then(data => {
@@ -25,8 +33,13 @@ function App() {
         } else {
           setWeatherData(data)
         }
+      })
+      .catch(() => {
+        setError("Something went wrong - please try again")
+      })
+      .finally( () => {
         setLoading(false)
-      });
+      })
   }
     return (
       <>
